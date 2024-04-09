@@ -1,7 +1,13 @@
 'use client'
 
+// bootstrap components
 import { Container, Navbar, Nav, Button } from 'react-bootstrap'
+
 import Link from 'next/link'
+
+const navColappse = {
+  height: '100vh'
+}
 
 export default function MainNavbar() {
   return (
