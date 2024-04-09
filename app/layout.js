@@ -2,8 +2,10 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 
 // Import bootstrap CSS
-
 import "bootstrap/dist/css/bootstrap.min.css"
+
+// Components
+import MainNavbar from "./components/Navbar"
 
 const roboto = Roboto({
   weight: '500',
@@ -19,6 +21,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={roboto.className} suppressHydrationWarning={true}>
+        <MainNavbar />
         {children}
       </body>
     </html>
