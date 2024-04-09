@@ -8,7 +8,9 @@ export default function MainNavbar() {
     <main>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container>
-          <Navbar.Brand href="#home">Logo HERE</Navbar.Brand>
+          <Navbar.Brand>
+            <h4 className='m-0'>DESK AI</h4>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className='d-flex align-items-center gap-4'>
