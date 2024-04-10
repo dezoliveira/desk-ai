@@ -92,9 +92,9 @@ export default function TicketsForm (){
                     onChange={(e) => setPriority(e.target.value)} 
                   >
                   <option>Selecione uma prioridade</option>
-                  <option value="1">Alta</option>
-                  <option value="2">Media</option>
-                  <option value="3">Baixa</option>
+                  <option value="Alta">Alta</option>
+                  <option value="Media">Media</option>
+                  <option value="Baixa">Baixa</option>
                 </Form.Select>
               </Form.Group>
 
