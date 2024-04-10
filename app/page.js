@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 // bootstrap components
-import { Container, Col, Row, Spinner } from 'react-bootstrap'
+import { Container, Col, Row, Spinner, Card, Button } from 'react-bootstrap'
 
 export default function Home() {
   const [news, setNews] = useState([])
@@ -36,13 +36,19 @@ export default function Home() {
 
   return (
     <main>
-      <Container fluid className='p-4'>
-        <Col lg={12} md={12} sm={12} className='d-flex flex-column'>
+      <Container className='p-4 d-flex align-items-center justify-content-center'>
+        <Col lg={12} md={12} sm={12}>
           {!isLoading && news.map((n) => (
-            <div key={n.id}>
-              <h1>{n.title}</h1>
-              <h4>{n.body}</h4>
-            </div>
+            <Card key={n.id} className='mb-4'>
+              <Card.Header>News</Card.Header>
+              <Card.Body>
+                <Card.Title>{n.title}</Card.Title>
+                <Card.Text>
+                  {n.body}
+                </Card.Text>
+                <Button variant="primary">Go somewhere</Button>
+              </Card.Body>
+            </Card>
           ))}
         </Col>
         <Col className='text-center'>
