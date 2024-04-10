@@ -17,8 +17,8 @@ export default function Home() {
   }, [])
 
   const getNews = () => {
-    const userRef = ref(database, 'news')
-    get(userRef).then((snapshot) => {
+    const newsRef = ref(database, 'news')
+    get(newsRef).then((snapshot) => {
       if (snapshot.exists()) {
         const newsArray = Object.entries(snapshot.val()).map(([id, data]) => ({
           id,
