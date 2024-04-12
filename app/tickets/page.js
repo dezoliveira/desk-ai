@@ -1,9 +1,12 @@
 'use client'
 
+// firebase
 import { database } from "@/firebaseConfig"
 import { get, ref } from "firebase/database"
+
 import { useEffect, useState } from "react"
 import Link from 'next/link'
+import Image from 'next/image'
 
 // bootstrap components
 import { Container, Card, Col, Button, Spinner, Badge } from 'react-bootstrap'
@@ -50,11 +53,18 @@ export default function Tickets() {
             <Card key={ticket.id} className='mb-4'>
               <Link href={`/tickets/${ticket.id}`} className="text-decoration-none text-black">
                 <Card.Header>{ticket.title}</Card.Header>
-                <Card.Body>
+                <Card.Body className="d-flex flex-column gap-4">
                   <Card.Title>{ticket.subtitle}</Card.Title>
                   <Card.Text>
                     {ticket.body}
                   </Card.Text>
+                  <Image
+                    src={ticket.imageUrl}
+                    width={200}
+                    height={200}
+                    alt="Picture of the author"
+                  />
+                  <small>Criado em:{ticket.date}</small>
                   {/* <Button variant="primary">Go somewhere</Button> */}
                   <span className="d-flex gap-2 align-items-center ">
                     Prioridade: 

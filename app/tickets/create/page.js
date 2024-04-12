@@ -1,7 +1,10 @@
 'use client'
 
-import { database } from '@/firebaseConfig'
+// firebase
+import { database, storage } from '@/firebaseConfig'
 import { push, ref, set } from 'firebase/database'
+import { getDownloadURL, ref as sRef, uploadBytes } from 'firebase/storage'
+
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
@@ -14,26 +17,46 @@ export default function TicketsForm (){
   const [subtitle, setSubtitle] = useState("")
   const [body, setBody] = useState("")
   const [priority, setPriority] = useState("")
+  const [image, setImage] = useState("")
 
   const handleCreateTicket = (e) => {
     e.preventDefault()
 
-    try {
-      const ticketsRef = ref(database, 'tickets')
-      const newTicketsRef = push(ticketsRef)
+    const dateNow = new Date().toLocaleDateString()
+    const timeNow = new Date().toLocaleTimeString(navigator.language, {
+      hour: '2-digit',
+      minute:'2-digit'
+    })
 
-      set (newTicketsRef, {
-        title: title,
-        subtitle: subtitle,
-        body: body,
-        priority: priority
+    const dateTime = dateNow + ' ás ' + timeNow
+
+    const storageRef = sRef(storage, 'images/' + Image.name)
+
+    uploadBytes(storageRef, image).then((snapshot) => {
+      getDownloadURL(storageRef)
+      .then((url) => {
+        try {
+          const ticketsRef = ref(database, 'tickets')
+          const newTicketsRef = push(ticketsRef)
+    
+          set (newTicketsRef, {
+            title: title,
+            subtitle: subtitle,
+            body: body,
+            priority: priority,
+            imageUrl: url,
+            date: dateTime
+          })
+    
+          clearStates()
+    
+        } catch (error) {
+          console.log('Firebase error:' + error)
+        }
+      }).catch((error) => {
+        console.log(error + 'Upload image error!')
       })
-
-      clearStates()
-
-    } catch (error) {
-      console.log('Firebase error:' + error)
-    }
+    })
   }
 
   const clearStates = () => {
@@ -45,7 +68,13 @@ export default function TicketsForm (){
     setTimeout(() => {
       router.push('/tickets')
     }, 2000);
+  }
 
+  // handle prepare image if have image
+  const handleChange = (e) => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0])
+    }
   }
 
   return (
@@ -82,6 +111,15 @@ export default function TicketsForm (){
                   aria-label="Ex: O usuário tentou cliclar em cadastrar..."
                   onChange={(e) => setBody(e.target.value)}
                   value={body}  
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formFiles">
+                <Form.Label>Arquivo</Form.Label>
+                <Form.Control
+                  type="file"
+                  placeholder="Add a File"
+                  onChange={handleChange}
                 />
               </Form.Group>
 
