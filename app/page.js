@@ -9,14 +9,14 @@ import { useEffect, useState } from 'react'
 import { Container, Col, Row, Spinner, Card, Button } from 'react-bootstrap'
 
 export default function Home() {
-  const [news, setNews] = useState([])
+  const [score, setScore] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     getNews()
   }, [])
 
-  const getNews = () => {
+  const getScore = () => {
     const newsRef = ref(database, 'news')
     get(newsRef).then((snapshot) => {
       if (snapshot.exists()) {

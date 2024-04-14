@@ -54,14 +54,15 @@ export default function Tickets() {
               <Link href={`/tickets/${ticket.id}`} className="text-decoration-none text-black">
                 <Card.Header>{ticket.title}</Card.Header>
                 <Card.Body className="d-flex flex-column gap-4">
-                  <Card.Title>{ticket.subtitle}</Card.Title>
+                  <Card.Title>Criador: {ticket.author}</Card.Title>
                   <Card.Text>
                     {ticket.body}
                   </Card.Text>
                   <Image
                     src={ticket.imageUrl}
-                    width={200}
-                    height={200}
+                    width={500}
+                    height={500}
+                    loading = 'lazy'
                     alt="Picture of the author"
                   />
                   <small>Criado em:{ticket.date}</small>

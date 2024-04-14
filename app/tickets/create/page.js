@@ -14,7 +14,7 @@ export default function TicketsForm (){
   const router = useRouter()
 
   const [title, setTitle] = useState("")
-  const [subtitle, setSubtitle] = useState("")
+  const [author, setAuthor] = useState("")
   const [body, setBody] = useState("")
   const [priority, setPriority] = useState("")
   const [image, setImage] = useState("")
@@ -41,7 +41,7 @@ export default function TicketsForm (){
     
           set (newTicketsRef, {
             title: title,
-            subtitle: subtitle,
+            author: author,
             body: body,
             priority: priority,
             imageUrl: url,
@@ -61,7 +61,7 @@ export default function TicketsForm (){
 
   const clearStates = () => {
     setTitle("")
-    setSubtitle("")
+    setAuthor("")
     setBody("")
     setPriority("")
 
@@ -85,7 +85,7 @@ export default function TicketsForm (){
             <Form onSubmit={handleCreateTicket}>
               <h4>Formulário</h4>
               <Form.Group className="mb-3" controlId="formTitle">
-                <Form.Label>Title</Form.Label>
+                <Form.Label>Título</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Ex: Formulário de Cadastro"
@@ -94,13 +94,13 @@ export default function TicketsForm (){
                 />
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formSubtitle">
-                <Form.Label>Subtítulo</Form.Label>
+              <Form.Group className="mb-3" controlId="formName">
+                <Form.Label>Autor</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Ex: 404 not found"
-                  onChange={(e) => setSubtitle(e.target.value)}
-                  value={subtitle}
+                  placeholder="Jon Dee"
+                  onChange={(e) => setAuthor(e.target.value)}
+                  value={author}
                 />
               </Form.Group>
 
