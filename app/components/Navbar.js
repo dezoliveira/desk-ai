@@ -6,7 +6,8 @@ import { Container, Navbar, Nav, Button } from 'react-bootstrap'
 import Link from 'next/link'
 
 const navColappse = {
-  height: '100vh'
+  height: '100vh',
+  position: 'fixed'
 }
 
 export default function MainNavbar() {
