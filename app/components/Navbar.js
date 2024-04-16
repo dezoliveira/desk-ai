@@ -13,7 +13,7 @@ const navColappse = {
 export default function MainNavbar() {
   return (
     <main>
-      <Navbar expand="lg" className="bg-body-tertiary">
+      <Navbar expand="lg">
         <Container>
           <Navbar.Brand>
             <h4 className='m-0'>DESK AI</h4>
@@ -21,10 +21,10 @@ export default function MainNavbar() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className='d-flex align-items-center gap-4'>
-              <Link href="/">Home</Link>
-              <Link href="/tickets">Chamados</Link>
+              <Link href="/" className='link'>Home</Link>
+              <Link href="/tickets" className='link'>Chamados</Link>
               <Link href="/tickets/create">
-                <Button className='btn btn-primary'>
+                <Button variant='danger'>
                   Abrir Chamado
                 </Button>
               </Link>

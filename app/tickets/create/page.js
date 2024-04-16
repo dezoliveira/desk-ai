@@ -2,7 +2,7 @@
 
 // firebase
 import { database, storage } from '@/firebaseConfig'
-import { push, ref, set } from 'firebase/database'
+import { push, ref, set, get, update, child } from 'firebase/database'
 import { getDownloadURL, ref as sRef, uploadBytes } from 'firebase/storage'
 
 import { useRouter } from 'next/navigation'
@@ -19,8 +19,47 @@ export default function TicketsForm (){
   const [priority, setPriority] = useState("")
   const [image, setImage] = useState("")
 
+  const comboPriorities = {
+
+  }
+
+  const updateScore = () => {
+    const scoreRef = ref(database, 'dashboard/score')
+    const newScoreRef = push(scoreRef)
+
+    get(scoreRef).then((snapshot) => {
+
+      if (snapshot.exists()) {
+        const scoreArray = snapshot.val()
+
+        update(scoreRef, {
+          high: scoreArray.high + (priority === 'Alta' ? 1 : 0),
+          low: scoreArray.low + (priority === 'Baixa' ? 1 : 0),
+          medium: scoreArray.medium + (priority === 'Media' ? 1 : 0),
+          open: scoreArray.open + 1,
+          total: scoreArray.total + 1,
+        })
+
+      } else {
+        set (newScoreRef, {
+          done: 0,
+          high: 0,
+          low: 0,
+          medium: 0,
+          open: 0,
+          total: 0,
+          working: 0
+        })
+      }
+    }).catch((error) => {
+      console.log(error)
+    })
+  }
+
   const handleCreateTicket = (e) => {
     e.preventDefault()
+
+    updateScore()
 
     const dateNow = new Date().toLocaleDateString()
     const timeNow = new Date().toLocaleTimeString(navigator.language, {

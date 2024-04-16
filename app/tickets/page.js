@@ -52,19 +52,22 @@ export default function Tickets() {
           {!isLoading && tickets.map((ticket) => (
             <Card key={ticket.id} className='mb-4'>
               <Link href={`/tickets/${ticket.id}`} className="text-decoration-none text-black">
-                <Card.Header>{ticket.title}</Card.Header>
+                <Card.Header className="card--header">
+                  {ticket.title}
+                </Card.Header>
                 <Card.Body className="d-flex flex-column gap-4">
                   <Card.Title>Criador: {ticket.author}</Card.Title>
                   <Card.Text>
                     {ticket.body}
                   </Card.Text>
-                  <Image
-                    src={ticket.imageUrl}
-                    width={500}
-                    height={500}
-                    loading = 'lazy'
-                    alt="Picture of the author"
-                  />
+                  <span>
+                    <Image
+                      src={ticket.imageUrl}
+                      width={200}
+                      height={200}
+                      alt="Picture of the author"
+                    />
+                  </span>
                   <small>Criado em:{ticket.date}</small>
                   {/* <Button variant="primary">Go somewhere</Button> */}
                   <span className="d-flex gap-2 align-items-center ">

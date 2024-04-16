@@ -1,0 +1,23 @@
+main {
+  background-color: #f8f9fa ;
+  height: '100vh'
+}
+
+.navbar {
+  background-color: #20c997;
+  color: #fff
+}
+
+div.card--header {
+  background-color: #20c997;
+}
+
+.link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: none;
+  color: blue;
+}
