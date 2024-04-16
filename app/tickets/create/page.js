@@ -30,7 +30,8 @@ export default function TicketsForm (){
 
     const dateTime = dateNow + ' ás ' + timeNow
 
-    const storageRef = sRef(storage, 'images/' + Image.name)
+    // Corrigir
+    const storageRef = sRef(storage, 'images/' + image.name)
 
     uploadBytes(storageRef, image).then((snapshot) => {
       getDownloadURL(storageRef)
