@@ -16,7 +16,7 @@ export default function MainNavbar() {
       <Navbar expand="lg">
         <Container>
           <Navbar.Brand>
-            <h4 className='m-0'>DESK AI</h4>
+            <h4 className='m-0 text-white'>DESK AI</h4>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

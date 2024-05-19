@@ -118,9 +118,9 @@ export default function TicketsForm (){
   }
 
   return (
-    <main>
+    <main className='form-wrapper'>
       <Container className='p-4 d-flex align-items-center justify-content-center'>
-        <Col lg={8} md={8} sm={12}>
+        <Col lg={6} md={6} sm={12}>
           <Row>
             <Form onSubmit={handleCreateTicket}>
               <h4>Formulário</h4>

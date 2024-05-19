@@ -21,3 +21,15 @@ div.card--header {
   text-decoration: none;
   color: blue;
 }
+
+.main_next {
+  height: 100%;
+}
+
+.wrapper {
+  height: 100vh;
+}
+
+.form-wrapper {
+  height: 100vh;
+}

@@ -55,7 +55,7 @@ export default function Tickets() {
                 <Card.Header className="card--header">
                   {ticket.title}
                 </Card.Header>
-                <Card.Body className="d-flex flex-column gap-4">
+                <Card.Body className="d-flex flex-column gap-2">
                   <Card.Title>Criador: {ticket.author}</Card.Title>
                   <Card.Text>
                     {ticket.body}
@@ -63,8 +63,8 @@ export default function Tickets() {
                   <span>
                     <Image
                       src={ticket.imageUrl}
-                      width={200}
-                      height={200}
+                      width={100}
+                      height={100}
                       alt="Picture of the author"
                     />
                   </span>
