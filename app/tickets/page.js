@@ -8,9 +8,6 @@ import { useEffect, useState } from "react"
 import Link from 'next/link'
 import Image from 'next/image'
 
-// bootstrap components
-import { Container, Card, Col, Button, Spinner, Badge } from 'react-bootstrap'
-
 export default function Tickets() {
   const [tickets, setTickets] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -47,19 +44,19 @@ export default function Tickets() {
 
   return(
     <main>
-      <Container className='p-4 d-flex align-items-center justify-content-center'>
-        <Col lg={12} md={12} sm={12}>
+      <div className='p-4 d-flex align-items-center justify-content-center'>
+        <div lg={12} md={12} sm={12}>
           {!isLoading && tickets.map((ticket) => (
-            <Card key={ticket.id} className='mb-4'>
+            <div key={ticket.id} className='mb-4'>
               <Link href={`/tickets/${ticket.id}`} className="text-decoration-none text-black">
-                <Card.Header className="card--header">
+                <div className="card--header">
                   {ticket.title}
-                </Card.Header>
-                <Card.Body className="d-flex flex-column gap-2">
-                  <Card.Title>Criador: {ticket.author}</Card.Title>
-                  <Card.Text>
+                </div>
+                <div className="d-flex flex-column gap-2">
+                  <div>Criador: {ticket.author}</div>
+                  <div>
                     {ticket.body}
-                  </Card.Text>
+                  </div>
                   <span>
                     <Image
                       src={ticket.imageUrl}
@@ -72,24 +69,22 @@ export default function Tickets() {
                   {/* <Button variant="primary">Go somewhere</Button> */}
                   <span className="d-flex gap-2 align-items-center ">
                     Prioridade: 
-                    <Badge bg={handlePriority(ticket.priority)}>{ticket.priority}</Badge>
+                    <span bg={handlePriority(ticket.priority)}>{ticket.priority}</span>
                   </span>
-                </Card.Body>
+                </div>
               </Link>
-            </Card>
+            </div>
           ))}
-        </Col>
-        <Col className='text-center'>
+        </div>
+        <div>
         {
           isLoading && tickets &&
           <>
-            <Spinner animation="border" role="status">
               <span className="visually-hidden">Loading...</span>
-            </Spinner>
           </>
         }
-        </Col>
-      </Container>
+        </div>
+      </div>
     </main>
   )
 }

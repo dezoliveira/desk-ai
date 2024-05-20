@@ -8,8 +8,6 @@ import { getDownloadURL, ref as sRef, uploadBytes } from 'firebase/storage'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
-import { Container, Col, Row, Form, Button } from 'react-bootstrap'
-
 export default function TicketsForm (){
   const router = useRouter()
 
@@ -119,70 +117,66 @@ export default function TicketsForm (){
 
   return (
     <main className='form-wrapper'>
-      <Container className='p-4 d-flex align-items-center justify-content-center'>
-        <Col lg={6} md={6} sm={12}>
-          <Row>
-            <Form onSubmit={handleCreateTicket}>
-              <h4>Formulário</h4>
-              <Form.Group className="mb-3" controlId="formTitle">
-                <Form.Label>Título</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Ex: Formulário de Cadastro"
-                  onChange={(e) => setTitle(e.target.value)}
-                  value={title} 
-                />
-              </Form.Group>
+      <div className='p-4 d-flex align-items-center justify-content-center'>
+        <form onSubmit={handleCreateTicket}>
+          <h4>Formulário</h4>
+          <div className="mb-3" controlId="formTitle">
+            <label>Título</label>
+            <input
+              type="text"
+              placeholder="Ex: Formulário de Cadastro"
+              onChange={(e) => setTitle(e.target.value)}
+              value={title} 
+            />
+          </div>
 
-              <Form.Group className="mb-3" controlId="formName">
-                <Form.Label>Autor</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Jon Dee"
-                  onChange={(e) => setAuthor(e.target.value)}
-                  value={author}
-                />
-              </Form.Group>
+          <div className="mb-3" controlId="formName">
+            <label>Autor</label>
+            <input
+              type="text"
+              placeholder="Jon Dee"
+              onChange={(e) => setAuthor(e.target.value)}
+              value={author}
+            />
+          </div>
 
-              <Form.Group className="mb-3" controlId="formBody">
-                <Form.Label>Descrição</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  aria-label="Ex: O usuário tentou cliclar em cadastrar..."
-                  onChange={(e) => setBody(e.target.value)}
-                  value={body}  
-                />
-              </Form.Group>
+          <div className="mb-3" controlId="formBody">
+            <label>Descrição</label>
+            <input
+              as="textarea"
+              aria-label="Ex: O usuário tentou cliclar em cadastrar..."
+              onChange={(e) => setBody(e.target.value)}
+              value={body}  
+            />
+          </div>
 
-              <Form.Group className="mb-3" controlId="formFiles">
-                <Form.Label>Arquivo</Form.Label>
-                <Form.Control
-                  type="file"
-                  placeholder="Add a File"
-                  onChange={handleChange}
-                />
-              </Form.Group>
+          <div className="mb-3" controlId="formFiles">
+            <label>Arquivo</label>
+            <input
+              type="file"
+              placeholder="Add a File"
+              onChange={handleChange}
+            />
+          </div>
 
-              <Form.Group className="mb-3" controlId="formPriority">
-                <Form.Label>Prioridade</Form.Label>
-                  <Form.Select
-                    aria-label="Selecione uma prioridade"
-                    onChange={(e) => setPriority(e.target.value)} 
-                  >
-                  <option>Selecione uma prioridade</option>
-                  <option value="Alta">Alta</option>
-                  <option value="Media">Media</option>
-                  <option value="Baixa">Baixa</option>
-                </Form.Select>
-              </Form.Group>
+          <div className="mb-3" controlId="formPriority">
+            <label>Prioridade</label>
+              <select
+                aria-label="Selecione uma prioridade"
+                onChange={(e) => setPriority(e.target.value)} 
+              >
+              <option>Selecione uma prioridade</option>
+              <option value="Alta">Alta</option>
+              <option value="Media">Media</option>
+              <option value="Baixa">Baixa</option>
+            </select>
+          </div>
 
-              <Button variant="primary" type="submit">
-                Submit
-              </Button>
-            </Form>
-          </Row>
-        </Col>
-      </Container>
+          <button variant="primary" type="submit">
+            Submit
+          </button>
+        </form>
+      </div>
     </main>
   )
 }

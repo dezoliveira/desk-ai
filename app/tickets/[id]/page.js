@@ -4,9 +4,6 @@ import { database } from "@/firebaseConfig"
 import { get, ref } from "firebase/database"
 import { useEffect, useState } from "react"
 
-// bootstrap components
-import { Container, Card, Col, Button, Spinner, Badge } from 'react-bootstrap'
-
 export default function TicketsDetails({params}) {
   const [tickets, setTickets] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -34,38 +31,32 @@ export default function TicketsDetails({params}) {
   
   return (
     <main>
-      <Container className='p-4 d-flex align-items-center justify-content-center'>
-        <Col lg={12} md={12} sm={12}>
+      <div className='p-4 d-flex align-items-center justify-content-center'>
           {
             !isLoading && tickets ? <>
-              <Card key={tickets.id} className='mb-4'>
-                <Card.Header>{tickets.title}</Card.Header>
-                <Card.Body>
-                  <Card.Title>{tickets.subtitle}</Card.Title>
-                  <Card.Text>
+              <div key={tickets.id} className='mb-4'>
+                <title>{tickets.title}</title>
+                <div>
+                  <title>{tickets.subtitle}</title>
+                  <div>
                     {tickets.body}
-                  </Card.Text>
+                  </div>
                   <span className="d-flex gap-2 align-items-center ">
                     Prioridade: 
-                    <Badge bg={handlePriority(tickets.priority)}>{tickets.priority}</Badge>
+                    <div bg={handlePriority(tickets.priority)}>{tickets.priority}</div>
                   </span>
-                </Card.Body>
-            </Card>
+                </div>
+            </div>
             </> : ''
           }
-        </Col>
 
-        <Col className='text-center'>
         {
           isLoading && tickets &&
           <>
-            <Spinner animation="border" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </Spinner>
+            <span className="visually-hidden">Loading...</span>
           </>
         }
-        </Col>
-      </Container>
+      </div>
     </main>
   )
 }

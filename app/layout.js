@@ -1,9 +1,6 @@
 import { Roboto } from "next/font/google";
 import "./globals.css";
 
-// Import bootstrap CSS
-import "bootstrap/dist/css/bootstrap.min.css"
-
 // Components
 import MainNavbar from "./components/Navbar"
 
