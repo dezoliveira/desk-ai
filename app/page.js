@@ -3,12 +3,7 @@
 import { database } from '@/firebaseConfig'
 import { get, ref } from 'firebase/database'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
-
-const maxContain = {
-  height: '90vh'
-}
 
 export default function Home() {
   const [score, setScore] = useState([])

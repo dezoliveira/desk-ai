@@ -3,13 +3,17 @@
 @tailwind utilities;
 
 .wrapper {
-  @apply h-[100vh] p-10
+  @apply h-[100vh] sm:p-10 p-10
 }
 
 a {
-  @apply text-slate-50
+  @apply text-slate-50 no-underline hover:text-primary
 }
 
 h1, h2, h3, h4, h5 {
   @apply text-primary
+}
+
+.link {
+  @apply no-underline
 }
