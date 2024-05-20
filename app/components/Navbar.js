@@ -12,11 +12,11 @@ export default function MainNavbar() {
     <main>
       <div class="navbar bg-base-100">
         <div class="flex-1">
-          <a class="btn btn-primary text-xl mx-4">
+          <a class="text-xl mx-4">
             <FontAwesomeIcon icon={faBars} />
           </a>
           <nav class="flex items-center align-center gap-4">
-            <Link href="/" className='link'>Home</Link>
+            <Link href="/" className='link'>Inicio</Link>
             <Link href="/tickets" className='link'>Chamados</Link>
             <Link href="/tickets/create">
               <button class='btn btn-primary'>

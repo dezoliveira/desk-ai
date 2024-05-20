@@ -116,65 +116,85 @@ export default function TicketsForm (){
   }
 
   return (
-    <main className='form-wrapper'>
-      <div className='p-4 d-flex align-items-center justify-content-center'>
-        <form onSubmit={handleCreateTicket}>
-          <h4>Formulário</h4>
-          <div className="mb-3" controlId="formTitle">
-            <label>Título</label>
+    <main class='wrapper flex items-center justify-center'>
+      <div class="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+        {/* Form de Criação de Tickets */}
+        <form class="card-body" onSubmit={handleCreateTicket}>
+          {/* Titulo */}
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Título</span>
+            </label>
             <input
               type="text"
-              placeholder="Ex: Formulário de Cadastro"
+              placeholder="Erro 404"
+              class="input input-bordered"
+              required
               onChange={(e) => setTitle(e.target.value)}
               value={title} 
             />
           </div>
 
-          <div className="mb-3" controlId="formName">
-            <label>Autor</label>
+          {/* Autor */}
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Autor</span>
+            </label>
             <input
               type="text"
-              placeholder="Jon Dee"
+              placeholder="John Dee"
+              class="input input-bordered"
+              required
               onChange={(e) => setAuthor(e.target.value)}
               value={author}
             />
           </div>
 
-          <div className="mb-3" controlId="formBody">
-            <label>Descrição</label>
-            <input
-              as="textarea"
-              aria-label="Ex: O usuário tentou cliclar em cadastrar..."
+          {/* Descrição */}
+           <div class="form-control">
+            <label class="label">
+              <span class="label-text">Descrição</span>
+            </label>
+            <textarea
+              placeholder="Esse chamado contém spoiler [...]"
+              class="textarea textarea-bordered h-24"
+              required
               onChange={(e) => setBody(e.target.value)}
-              value={body}  
-            />
+              value={body}
+            >
+            </textarea>
           </div>
 
-          <div className="mb-3" controlId="formFiles">
-            <label>Arquivo</label>
+          {/* Prioridades */}
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Prioridades</span>
+            </label>
+            <select
+              class="select select-bordered w-full max-w-xs"
+              onChange={(e) => setPriority(e.target.value)} 
+            >
+              <option selected>Alta</option>
+              <option>Média</option>
+              <option>Baixa</option>
+            </select>
+          </div>
+
+          {/* File */}
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Arquivo</span>
+            </label>
             <input
               type="file"
-              placeholder="Add a File"
+              class="file-input file-input-bordered file-input-primary w-full max-w-xs"
               onChange={handleChange}
             />
           </div>
 
-          <div className="mb-3" controlId="formPriority">
-            <label>Prioridade</label>
-              <select
-                aria-label="Selecione uma prioridade"
-                onChange={(e) => setPriority(e.target.value)} 
-              >
-              <option>Selecione uma prioridade</option>
-              <option value="Alta">Alta</option>
-              <option value="Media">Media</option>
-              <option value="Baixa">Baixa</option>
-            </select>
+          <div class="form-control mt-6">
+            <button class="btn btn-primary">Criar</button>
           </div>
-
-          <button variant="primary" type="submit">
-            Submit
-          </button>
         </form>
       </div>
     </main>

@@ -7,7 +7,7 @@
 }
 
 a {
-  @apply text-slate-50 no-underline hover:text-primary
+  @apply text-slate-50 no-underline hover:text-primary hover:cursor-pointer
 }
 
 h1, h2, h3, h4, h5 {
@@ -16,4 +16,12 @@ h1, h2, h3, h4, h5 {
 
 .link {
   @apply no-underline
+}
+
+input, textarea, select {
+  @apply text-slate-50
+}
+
+main {
+  @apply bg-slate-50
 }
